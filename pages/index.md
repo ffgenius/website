@@ -4,7 +4,7 @@ description: FFgenius's Portfolio
 art: random
 ---
 
-嗨， 我是 FFgenius， 一个前端开发工程师， 梦想加入开源社区，为开源贡献力量。
+嗨，我是 FFgenius，一个前端开发工程师，梦想加入开源社区，为开源贡献力量。
 
 常用技术栈 {HTML} {CSS} {JS} {TS} {Vue} {VueUse} {Vite} {UnoCSS}<br>
 仍需继续提升 {React} {Nuxt} {Vitest}<br>

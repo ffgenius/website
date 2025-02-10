@@ -1,5 +1,4 @@
-import { Buffer } from 'node:buffer'
-import { basename, dirname, resolve } from 'node:path'
+import { resolve } from 'node:path'
 import MarkdownItShiki from '@shikijs/markdown-it'
 import { rendererRich, transformerTwoslash } from '@shikijs/twoslash'
 import Vue from '@vitejs/plugin-vue'
@@ -11,7 +10,6 @@ import LinkAttributes from 'markdown-it-link-attributes'
 import MarkdownItMagicLink from 'markdown-it-magic-link'
 // @ts-expect-error missing types
 import TOC from 'markdown-it-table-of-contents'
-import sharp from 'sharp'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import IconsResolver from 'unplugin-icons/resolver'
@@ -122,9 +120,9 @@ export default defineConfig({
 
         md.use(MarkdownItMagicLink, {
           linksMap: {
-            JS: { link: 'https://developer.mozilla.org/en-US', imageUrl: '/og/LogosJavascript.png' },
-            CSS: { link: 'https://developer.mozilla.org/en-US', imageUrl: '/og/LogosCss3.png' },
-            HTML: { link: 'https://developer.mozilla.org/en-US', imageUrl: '/og/LogosHtml5.png' },
+            JS: { link: 'https://developer.mozilla.org/en-US', imageUrl: '/images/LogosJavascript.png' },
+            CSS: { link: 'https://developer.mozilla.org/en-US', imageUrl: '/images/LogosCss3.png' },
+            HTML: { link: 'https://developer.mozilla.org/en-US', imageUrl: '/images/LogosHtml5.png' },
             TS: { link: 'https://www.typescriptlang.org', imageUrl: 'https://www.typescriptlang.org/favicon-32x32.png' },
             React: { link: 'https://github.com/facebook/react', imageUrl: 'https://react.dev/favicon-32x32.png' },
             VueUse: { link: 'https://github.com/vueuse/vueuse', imageUrl: 'https://github.com/vueuse.png' },
@@ -139,24 +137,24 @@ export default defineConfig({
 
         md.use(GitHubAlerts)
       },
-      frontmatterPreprocess(frontmatter, options, id, defaults) {
-        (() => {
-          if (!id.endsWith('.md'))
-            return
-          const route = basename(id, '.md')
-          if (route === 'index' || frontmatter.image || !frontmatter.title)
-            return
-          const path = `og/${route}.png`
-          promises.push(
-            fs.existsSync(`${id.slice(0, -3)}.png`)
-              ? fs.copy(`${id.slice(0, -3)}.png`, `public/${path}`)
-              : generateOg(frontmatter.title!.replace(/\s-\s.*$/, '').trim(), `public/${path}`),
-          )
-          frontmatter.image = `https://antfu.me/${path}`
-        })()
-        const head = defaults(frontmatter, options)
-        return { head, frontmatter }
-      },
+      // frontmatterPreprocess(frontmatter, options, id, defaults) {
+      //   (() => {
+      //     if (!id.endsWith('.md'))
+      //       return
+      //     const route = basename(id, '.md')
+      //     if (route === 'index' || frontmatter.image || !frontmatter.title)
+      //       return
+      //     const path = `og/${route}.png`
+      //     promises.push(
+      //       fs.existsSync(`${id.slice(0, -3)}.png`)
+      //         ? fs.copy(`${id.slice(0, -3)}.png`, `public/${path}`)
+      //         : generateOg(frontmatter.title!.replace(/\s-\s.*$/, '').trim(), `public/${path}`),
+      //     )
+      //     frontmatter.image = `https://antfu.me/${path}`
+      //   })()
+      //   const head = defaults(frontmatter, options)
+      //   return { head, frontmatter }
+      // },
     }),
 
     AutoImport({
@@ -214,31 +212,31 @@ export default defineConfig({
   },
 })
 
-const ogSVg = fs.readFileSync('./scripts/og-template.svg', 'utf-8')
+// const ogSVg = fs.readFileSync('./scripts/og-template.svg', 'utf-8')
 
-async function generateOg(title: string, output: string) {
-  if (fs.existsSync(output))
-    return
-
-  await fs.mkdir(dirname(output), { recursive: true })
-  // breakline every 30 chars
-  const lines = title.trim().split(/(.{0,30})(?:\s|$)/g).filter(Boolean)
-
-  const data: Record<string, string> = {
-    line1: lines[0],
-    line2: lines[1],
-    line3: lines[2],
-  }
-  const svg = ogSVg.replace(/\{\{([^}]+)\}\}/g, (_, name) => data[name] || '')
-
-  console.log(`Generating ${output}`)
-  try {
-    await sharp(Buffer.from(svg))
-      .resize(1200 * 1.1, 630 * 1.1)
-      .png()
-      .toFile(output)
-  }
-  catch (e) {
-    console.error('Failed to generate og image', e)
-  }
-}
+// async function generateOg(title: string, output: string) {
+//   if (fs.existsSync(output))
+//     return
+//
+//   await fs.mkdir(dirname(output), { recursive: true })
+//   // breakline every 30 chars
+//   const lines = title.trim().split(/(.{0,30})(?:\s|$)/g).filter(Boolean)
+//
+//   const data: Record<string, string> = {
+//     line1: lines[0],
+//     line2: lines[1],
+//     line3: lines[2],
+//   }
+//   const svg = ogSVg.replace(/\{\{([^}]+)\}\}/g, (_, name) => data[name] || '')
+//
+//   console.log(`Generating ${output}`)
+//   try {
+//     await sharp(Buffer.from(svg))
+//       .resize(1200 * 1.1, 630 * 1.1)
+//       .png()
+//       .toFile(output)
+//   }
+//   catch (e) {
+//     console.error('Failed to generate og image', e)
+//   }
+// }

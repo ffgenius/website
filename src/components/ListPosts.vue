@@ -24,7 +24,7 @@ const routes: Post[] = router.getRoutes()
     redirect: i.meta.frontmatter.redirect,
     place: i.meta.frontmatter.place,
   }))
-
+console.log(routes)
 const posts = computed(() =>
   [...(props.posts || routes), ...props.extra || []]
     .sort((a, b) => +new Date(b.date) - +new Date(a.date))
@@ -91,6 +91,11 @@ function getGroupName(p: Post) {
                 align-middle flex-none
                 class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 ml--12 mr2 my-auto hidden md:block"
               >中文</span>
+              <span
+                v-if="route.lang === 'en'"
+                align-middle flex-none
+                class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 ml--12 mr2 my-auto hidden md:block"
+              >英文</span>
               <span align-middle>{{ route.title }}</span>
               <span
                 v-if="route.redirect"
