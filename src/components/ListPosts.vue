@@ -24,7 +24,6 @@ const routes: Post[] = router.getRoutes()
     redirect: i.meta.frontmatter.redirect,
     place: i.meta.frontmatter.place,
   }))
-console.log(routes)
 const posts = computed(() =>
   [...(props.posts || routes), ...props.extra || []]
     .sort((a, b) => +new Date(b.date) - +new Date(a.date))
