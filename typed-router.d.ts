@@ -34,6 +34,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/type-challenges-learn': RouteRecordInfo<'/posts/type-challenges-learn', '/posts/type-challenges-learn', Record<never, never>, Record<never, never>>,
     '/posts/type-challenges-learn-en': RouteRecordInfo<'/posts/type-challenges-learn-en', '/posts/type-challenges-learn-en', Record<never, never>, Record<never, never>>,
     '/posts/vue-cli-syntax-handle': RouteRecordInfo<'/posts/vue-cli-syntax-handle', '/posts/vue-cli-syntax-handle', Record<never, never>, Record<never, never>>,
+    '/posts/win-ni-usage': RouteRecordInfo<'/posts/win-ni-usage', '/posts/win-ni-usage', Record<never, never>, Record<never, never>>,
     '/projects': RouteRecordInfo<'/projects', '/projects', Record<never, never>, Record<never, never>>,
     '/sponsors-list': RouteRecordInfo<'/sponsors-list', '/sponsors-list', Record<never, never>, Record<never, never>>,
     '/streams': RouteRecordInfo<'/streams', '/streams', Record<never, never>, Record<never, never>>,
