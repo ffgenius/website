@@ -31,6 +31,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/': RouteRecordInfo<'/posts/', '/posts', Record<never, never>, Record<never, never>>,
     '/posts/eslint-config': RouteRecordInfo<'/posts/eslint-config', '/posts/eslint-config', Record<never, never>, Record<never, never>>,
     '/posts/github-abbr': RouteRecordInfo<'/posts/github-abbr', '/posts/github-abbr', Record<never, never>, Record<never, never>>,
+    '/posts/motion-vue': RouteRecordInfo<'/posts/motion-vue', '/posts/motion-vue', Record<never, never>, Record<never, never>>,
     '/posts/type-challenges-learn': RouteRecordInfo<'/posts/type-challenges-learn', '/posts/type-challenges-learn', Record<never, never>, Record<never, never>>,
     '/posts/type-challenges-learn-en': RouteRecordInfo<'/posts/type-challenges-learn-en', '/posts/type-challenges-learn-en', Record<never, never>, Record<never, never>>,
     '/posts/vue-cli-syntax-handle': RouteRecordInfo<'/posts/vue-cli-syntax-handle', '/posts/vue-cli-syntax-handle', Record<never, never>, Record<never, never>>,
