@@ -29,6 +29,7 @@ declare module 'vue-router/auto-routes' {
     '/notes': RouteRecordInfo<'/notes', '/notes', Record<never, never>, Record<never, never>>,
     '/podcasts': RouteRecordInfo<'/podcasts', '/podcasts', Record<never, never>, Record<never, never>>,
     '/posts/': RouteRecordInfo<'/posts/', '/posts', Record<never, never>, Record<never, never>>,
+    '/posts/build-tools': RouteRecordInfo<'/posts/build-tools', '/posts/build-tools', Record<never, never>, Record<never, never>>,
     '/posts/eslint-config': RouteRecordInfo<'/posts/eslint-config', '/posts/eslint-config', Record<never, never>, Record<never, never>>,
     '/posts/github-abbr': RouteRecordInfo<'/posts/github-abbr', '/posts/github-abbr', Record<never, never>, Record<never, never>>,
     '/posts/motion-vue': RouteRecordInfo<'/posts/motion-vue', '/posts/motion-vue', Record<never, never>, Record<never, never>>,
